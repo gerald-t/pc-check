@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PC Check — Device Diagnostics</title><meta name="description" content="Browser-based PC and peripheral diagnostic toolkit"><link rel="stylesheet" href="assets/css/styles.css"></head><body>
 <header><h1>PC Check</h1><p>Quick browser-based checks for your computer and peripherals.</p></header><main>
-<div class="notice"><b>Browser limitation:</b> These tests only access devices exposed to the browser. They cannot inspect internal hardware health, temperatures, battery condition, drivers or system-level errors. Microphone and camera require permission and HTTPS. Speaker playback needs human confirmation.</div>
 <div class="grid">
 <section class="card keyboard-card"><h2>⌨ Keyboard</h2><p>Press any key to test it.</p><div class="keyboard-hint"><span class="status" id="keyStatus">No keys pressed yet.</span><span class="status"><i class="key-legend"></i>Key detected</span></div><div class="keyboard-wrap"><div class="keyboard-board" id="keyboard" tabindex="0" role="application" aria-label="Full-size standard keyboard with navigation cluster and numeric keypad"></div></div><div class="actions"><button id="clearKeys">Clear detected keys</button></div></section>
 <section class="card"><h2>🖱 Mouse / Touchpad</h2><p>Move, click and scroll in this area.</p><div class="area" id="mouse">Move or click here</div><div class="status" id="mouseStatus">Waiting for input.</div></section>
