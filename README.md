@@ -56,3 +56,9 @@ A website cannot directly read low-level hardware health, temperatures, battery 
 ## Privacy
 
 All checks run in the browser. This page does not upload camera or microphone streams or diagnostic results.
+
+## Copyright
+
+Copyright © 2026 gerald-t. All rights reserved.
+
+Unless otherwise stated, the contents of this repository may not be copied, redistributed, modified, or used for commercial purposes without prior permission from the copyright holder. This notice is not a substitute for a formal software licence.
