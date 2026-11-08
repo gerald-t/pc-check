@@ -1,41 +1,31 @@
 # PC Check
 
-A browser-based PC and peripheral diagnostic dashboard built with React, TypeScript and Vite.
+A browser-only PC and peripheral diagnostic page built as a single static `index.html` file.
 
-## Features
-- **Keyboard:** records unique key presses while the test is open.
-- **Mouse / touchpad:** checks pointer movement and click input.
-- **Speakers:** plays test tones; you confirm that you can hear them.
-- **Microphone:** requests browser permission and displays a live input meter.
-- **Camera:** requests browser permission and shows a local video preview.
-- **Display:** provides solid-color patterns for visual inspection.
-- **Connectivity:** checks the browser's online/offline status.
-- **Report:** exports a JSON summary of test results.
+## Run on GitHub Pages
 
-## Run locally
-```bash
-npm install
-npm run dev
-```
+This repository does not require Node.js, npm, React, Vite, TypeScript, or a build step. GitHub Pages serves the root `index.html` directly through the GitHub Actions workflow in `.github/workflows/deploy.yml`.
 
-## Production build
-```bash
-npm run build
-npm run preview
-```
+1. In the repository, open **Settings → Pages**.
+2. Set **Build and deployment → Source** to **GitHub Actions**.
+3. Push changes to `implement/chatgpt` or `main`, or run **Deploy static site to GitHub Pages** from the Actions tab.
+4. When the workflow succeeds, open the Pages URL shown in the deployment job. For this project it is normally `https://gerald-t.github.io/pc-check/`.
 
-## Publish on GitHub Pages
-This repository is configured to publish at https://gerald-t.github.io/pc-check/.
+## Included tests
 
-1. Merge the `implement/chatgpt` branch into `main`.
-2. In the repository, open **Settings → Pages**.
-3. Under **Build and deployment**, set **Source** to **GitHub Actions**.
-4. The workflow in `.github/workflows/deploy.yml` deploys the site when changes are pushed to `main`. You can also run it manually from **Actions → Deploy to GitHub Pages → Run workflow**.
-5. Once the workflow completes successfully, open the Pages URL above.
-
-Microphone and camera access require a secure context (HTTPS or localhost) and user permission.
+- Keyboard key-event test
+- Mouse/touchpad pointer and click test
+- Speaker tone playback
+- Microphone input level meter
+- Camera preview
+- Full-screen display color inspection
+- Browser online/offline status
+- JSON diagnostic report export
 
 ## Browser limitations
-This is a browser-level screening tool, not a full hardware diagnostic. Browsers cannot reliably read low-level hardware health, test firmware/system shortcuts, verify physical speaker channels automatically, or detect dead pixels automatically. Connectivity uses the browser's online indicator and does not measure internet speed or latency. The display and audio checks require user confirmation.
 
-All microphone and camera streams are local to the browser session and are stopped when the diagnostic dialog is closed.
+A website cannot directly read low-level hardware health, temperatures, battery condition, driver state, or operating-system errors. Microphone and camera tests require browser permission and HTTPS. The speaker test requires the user to confirm that sound is audible. The connectivity test reports `navigator.onLine`, which is only the browser's connection hint.
+
+## Privacy
+
+All checks run in the browser. This page does not upload camera or microphone streams or diagnostic results.
