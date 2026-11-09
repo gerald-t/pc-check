@@ -53,6 +53,5 @@ displayOverlay.onclick=closeDisplay;
 document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement)displayOverlay.classList.remove('show')});
 document.querySelectorAll('[data-color]').forEach(b=>b.onclick=()=>full(b.dataset.color));
 function net(){let online=navigator.onLine;$('network').textContent=online?'Online — browser reports a network connection':'Offline — browser reports no network connection';save('connectivity',{online})}window.addEventListener('online',net);window.addEventListener('offline',net);$('refresh').onclick=net;net();
-$('export').onclick=()=>{report.finishedAt=new Date().toISOString();report.browser={userAgent:navigator.userAgent,language:navigator.language,platform:navigator.platform,screen:{width:window.screen.width,height:window.screen.height},online:navigator.onLine};let u=URL.createObjectURL(new Blob([JSON.stringify(report,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=u;a.download='pc-check-report.json';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);$('reportStatus').textContent='Report exported.'};
 window.addEventListener('pagehide',()=>{stopCamera();stopMicTracks();if(micPlaybackUrl)URL.revokeObjectURL(micPlaybackUrl);stopSpeaker(false)});
 })();
