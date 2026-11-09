@@ -7,7 +7,7 @@ const fn=document.createElement('div');fn.className='kb-function';
 const layout=document.createElement('div');layout.className='kb-layout';const main=document.createElement('div');main.className='kb-main';
 addGridRow(main,[['`','Backquote'],['1','Digit1'],['2','Digit2'],['3','Digit3'],['4','Digit4'],['5','Digit5'],['6','Digit6'],['7','Digit7'],['8','Digit8'],['9','Digit9'],['0','Digit0'],['-','Minus'],['=','Equal'],['Backspace','Backspace',2]]);
 addGridRow(main,[['Tab','Tab',2],['Q','KeyQ'],['W','KeyW'],['E','KeyE'],['R','KeyR'],['T','KeyT'],['Y','KeyY'],['U','KeyU'],['I','KeyI'],['O','KeyO'],['P','KeyP'],['[','BracketLeft'],[']','BracketRight'],['\\','Backslash']]);
-addGridRow(main,[['Caps','CapsLock',2],['A','KeyA'],['S','KeyS'],['D','KeyD'],['F','KeyF'],['G','KeyG'],['H','KeyH'],['J','KeyJ'],['K','KeyK'],['L','KeyL'],[';','Semicolon'],["'",'Quote'],['Enter','Enter',2]]);
+addGridRow(main,[['Caps','CapsLock',2],['A','KeyA'],['S','KeyS'],['D','KeyD'],['F','KeyF'],['G','KeyG'],['H','KeyH'],['J','KeyJ'],['K','KeyK'],['L','KeyL'],[';','Semicolon'],["'",'Quote'],['Enter','Enter',2,'enter']]);
 addGridRow(main,[['Shift','ShiftLeft',2],['Z','KeyZ'],['X','KeyX'],['C','KeyC'],['V','KeyV'],['B','KeyB'],['N','KeyN'],['M','KeyM'],[',','Comma'],['.','Period'],['/','Slash'],['Shift','ShiftRight',1]]);
 addGridRow(main,[['Ctrl','ControlLeft',2],['Win','MetaLeft'],['Alt','AltLeft',2],['','Space',6],['Alt','AltRight',2],['Menu','ContextMenu'],['Ctrl','ControlRight']]);layout.append(main);
 const middle=document.createElement('div');middle.className='kb-middle';
