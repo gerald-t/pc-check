@@ -45,7 +45,7 @@
 
       <section class="card" aria-labelledby="speaker-heading">
         <h2 id="speaker-heading">🔊 Speaker</h2>
-        <p>Play a music about 18-seconds testing both left and right speaker.</p>
+        <p>Play an 18-second audio test across both left and right speakers.</p>
         <div class="actions">
           <button class="primary" id="playSpeakerTest" type="button">Start speaker test</button>
           <button id="stop" type="button" disabled>Stop</button>
@@ -56,7 +56,7 @@
       <section class="card" aria-labelledby="microphone-heading">
         <h2 id="microphone-heading">🎙 Microphone</h2>
         <p>Record 10 seconds of audio, then play it back.</p>
-        <div class="meter" aria-label="Microphone input level">
+        <div class="meter" role="meter" aria-label="Microphone input level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
           <span id="meter"></span>
         </div>
         <div class="actions">
@@ -80,7 +80,7 @@
       <section class="card" aria-labelledby="display-heading">
         <h2 id="display-heading">🖥 Display inspection</h2>
         <p>Choose a solid color to inspect pixels and uniformity. Click the full-screen display to exit.</p>
-        <div class="colors" aria-label="Display test colors">
+        <div class="colors" role="group" aria-label="Display test colors">
           <button class="swatch swatch-white" data-color="white" type="button" aria-label="White screen" title="White"></button>
           <button class="swatch swatch-black" data-color="black" type="button" aria-label="Black screen" title="Black"></button>
           <button class="swatch swatch-red" data-color="red" type="button" aria-label="Red screen" title="Red"></button>
@@ -112,7 +112,7 @@
     <p class="muted">PC Check runs locally in your browser. Camera and microphone streams are not uploaded by this page.</p>
   </main>
 
-  <div class="screen" id="screen" aria-label="Full-screen display test">
+  <div class="screen" id="screen" role="region" aria-label="Full-screen display test">
     <span>Click anywhere to exit display test</span>
   </div>
 
