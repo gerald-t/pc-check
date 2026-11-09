@@ -45,15 +45,15 @@ When you merge changes into the published branch, GitHub Pages will publish the 
 - Microphone input level meter
 - Camera preview
 - Full-screen display color inspection
-- Browser online/offline status
+- Internet speed test for latency, download and upload speed
 
 ## Test limitations
 
-A website cannot directly read low-level hardware health, temperatures, battery condition, driver state, or operating-system errors. Microphone and camera tests require browser permission and a secure context (HTTPS or localhost). The speaker test requires the user to listen and confirm that sound is audible. The connectivity test reports `navigator.onLine`, which is only the browser's connection hint.
+A website cannot directly read low-level hardware health, temperatures, battery condition, driver state, or operating-system errors. Microphone and camera tests require browser permission and a secure context (HTTPS or localhost). The speaker test requires the user to listen and confirm that sound is audible. The internet speed test uses Cloudflare's public speed-test endpoints to measure latency, download and upload throughput. Running it sends test traffic and the visitor's IP address to Cloudflare. Results vary with network conditions and the selected test server.
 
 ## Privacy
 
-All checks run in the browser. This page does not upload camera or microphone streams or diagnostic results.
+Tests run in the browser. Camera and microphone streams are not uploaded by this page. The internet speed test sends measurement traffic to Cloudflare, which can see the visitor's IP address and test requests.
 
 ## Copyright
 
