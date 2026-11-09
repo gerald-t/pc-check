@@ -1,6 +1,6 @@
 # PC Check
 
-A browser-based PC and peripheral diagnostic website built with plain HTML, CSS, and JavaScript. It is a static site and does not require a server-side application or build process.
+A browser-based PC diagnostic website built with plain HTML, CSS, and JavaScript. It is a static site and does not require a server-side application or build process.
 
 ## Project structure
 
@@ -41,7 +41,6 @@ When you merge changes into the published branch, GitHub Pages will publish the 
 ## Included tests
 
 - Keyboard key-event test, including a full-size keyboard layout with numeric keypad
-- Mouse/touchpad pointer and click test
 - Speaker tone playback
 - Microphone input level meter
 - Camera preview
