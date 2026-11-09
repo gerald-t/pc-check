@@ -11,7 +11,7 @@ pc-check/
 │   ├── css/
 │   │   └── styles.css      # All page styling
 │   └── js/
-│       └── app.js          # Diagnostic features and application logic
+│       └── app.js          # Test interactions and application logic
 └── README.md
 ```
 
@@ -46,11 +46,10 @@ When you merge changes into the published branch, GitHub Pages will publish the 
 - Camera preview
 - Full-screen display color inspection
 - Browser online/offline status
-- JSON diagnostic report export
 
-## Browser limitations
+## Test limitations
 
-A website cannot directly read low-level hardware health, temperatures, battery condition, driver state, or operating-system errors. Microphone and camera tests require browser permission and a secure context (HTTPS or localhost). The speaker test requires the user to confirm that sound is audible. The connectivity test reports `navigator.onLine`, which is only the browser's connection hint.
+A website cannot directly read low-level hardware health, temperatures, battery condition, driver state, or operating-system errors. Microphone and camera tests require browser permission and a secure context (HTTPS or localhost). The speaker test requires the user to listen and confirm that sound is audible. The connectivity test reports `navigator.onLine`, which is only the browser's connection hint.
 
 ## Privacy
 
