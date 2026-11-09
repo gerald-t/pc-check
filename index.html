@@ -36,13 +36,6 @@
         </div>
       </section>
 
-      <section class="card" aria-labelledby="mouse-heading">
-        <h2 id="mouse-heading">🖱 Mouse / Touchpad</h2>
-        <p>Move, click and scroll in this area.</p>
-        <div class="area" id="mouse">Move or click here</div>
-        <div class="status" id="mouseStatus" aria-live="polite">Waiting for input.</div>
-      </section>
-
       <section class="card" aria-labelledby="speaker-heading">
         <h2 id="speaker-heading">🔊 Speaker</h2>
         <p>Play an 18-second audio test across both left and right speakers.</p>
@@ -73,7 +66,7 @@
         <p>Preview your camera after granting permission.</p>
         <video id="video" class="preview" autoplay muted playsinline aria-label="Camera preview"></video>
         <button class="primary" id="camStart" type="button">Start camera</button>
-        <button id="camStop" type="button">Stop</button>
+        <button id="camStop" type="button" disabled>Stop</button>
         <div class="status" id="camStatus" aria-live="polite">Not started.</div>
       </section>
 
