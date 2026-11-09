@@ -87,11 +87,20 @@
         <button data-color="black" class="full" type="button">Full-screen black</button>
       </section>
 
-      <section class="card" aria-labelledby="connectivity-heading">
-        <h2 id="connectivity-heading">🌐 Connectivity</h2>
-        <p>Browser-reported network status.</p>
-        <div class="status" id="network" aria-live="polite"></div>
-        <button id="refresh" type="button">Refresh</button>
+      <section class="card" aria-labelledby="speed-heading">
+        <h2 id="speed-heading">🌐 Internet speed</h2>
+        <p>Measure your connection's latency, download and upload speed.</p>
+        <div class="speed-results" aria-live="polite">
+          <div class="speed-result"><span>Ping</span><strong id="pingResult">—</strong><small>ms</small></div>
+          <div class="speed-result"><span>Download</span><strong id="downloadResult">—</strong><small>Mbps</small></div>
+          <div class="speed-result"><span>Upload</span><strong id="uploadResult">—</strong><small>Mbps</small></div>
+        </div>
+        <div class="actions">
+          <button class="primary" id="speedStart" type="button">Start</button>
+          <button id="speedStop" type="button" disabled>Stop</button>
+        </div>
+        <div class="status" id="speedStatus" aria-live="polite">Ready. Press Start to test your internet connection.</div>
+        <p class="speed-note">Uses Cloudflare's network to measure speed. Test data and your connection's IP address are sent to Cloudflare; camera and microphone recordings are not.</p>
       </section>
 
     </div>
