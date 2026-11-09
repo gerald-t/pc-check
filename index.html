@@ -38,9 +38,9 @@
 
       <section class="card" aria-labelledby="speaker-heading">
         <h2 id="speaker-heading">🔊 Speaker</h2>
-        <p>Play an 18-second audio test across both left and right speakers.</p>
+        <p>Play an 18-second sound test across both left and right speakers.</p>
         <div class="actions">
-          <button class="primary" id="playSpeakerTest" type="button">Start speaker test</button>
+          <button class="primary" id="playSpeakerTest" type="button">Start</button>
           <button id="stop" type="button" disabled>Stop</button>
         </div>
         <div class="status" id="speakerStatus" aria-live="polite">Ready. Press Start to test both channels automatically.</div>
@@ -65,7 +65,7 @@
         <h2 id="camera-heading">📷 Camera</h2>
         <p>Preview your camera after granting permission.</p>
         <video id="video" class="preview" autoplay muted playsinline aria-label="Camera preview"></video>
-        <button class="primary" id="camStart" type="button">Start camera</button>
+        <button class="primary" id="camStart" type="button">Start</button>
         <button id="camStop" type="button" disabled>Stop</button>
         <div class="status" id="camStatus" aria-live="polite">Not started.</div>
       </section>
@@ -94,12 +94,6 @@
         <button id="refresh" type="button">Refresh</button>
       </section>
 
-      <section class="card" aria-labelledby="report-heading">
-        <h2 id="report-heading">📋 Diagnostic report</h2>
-        <p>Download test activity and browser details as JSON.</p>
-        <button class="primary" id="export" type="button">Export JSON report</button>
-        <div class="status" id="reportStatus" aria-live="polite"></div>
-      </section>
     </div>
 
     <p class="muted">PC Check runs locally in your browser. Camera and microphone streams are not uploaded by this page.</p>
