@@ -1,4 +1,4 @@
-(()=>{const $=id=>document.getElementById(id);
+(()=>{const $=id=>document.getElementById(id);function save(){}
 const kb=$('keyboard');let seen=new Set();
 function makeKey(label,code,span=1,extra=''){const el=document.createElement('div');el.className='kb-key'+(span>1?' wide':'')+(extra?' '+extra:'');el.dataset.code=code;el.textContent=label;if(span>1)el.style.gridColumn='span '+span;return el}
 function addGridRow(parent,items){const row=document.createElement('div');row.className='kb-row';items.forEach(([label,code,span=1])=>row.append(makeKey(label,code,span)));parent.append(row)}
