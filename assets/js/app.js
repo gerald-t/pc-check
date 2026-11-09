@@ -52,6 +52,76 @@ function full(c){displayOverlay.style.background=c;displayOverlay.classList.add(
 displayOverlay.onclick=closeDisplay;
 document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement)displayOverlay.classList.remove('show')});
 document.querySelectorAll('[data-color]').forEach(b=>b.onclick=()=>full(b.dataset.color));
-function net(){let online=navigator.onLine;$('network').textContent=online?'Online — browser reports a network connection':'Offline — browser reports no network connection';save('connectivity',{online})}window.addEventListener('online',net);window.addEventListener('offline',net);$('refresh').onclick=net;net();
+let speedController=null,speedRunning=false;
+const speedDownUrl='https://speed.cloudflare.com/__down';
+const speedUpUrl='https://speed.cloudflare.com/__up';
+function showSpeed(id,value){$(id).textContent=value}
+function formatSpeed(bytes,elapsed){return ((bytes*8)/(elapsed/1000)/1e6).toFixed(1)}
+async function speedFetch(url,options,signal){const response=await fetch(url,{...options,signal,cache:'no-store',mode:'cors'});if(!response.ok)throw new Error('Speed test server returned HTTP '+response.status);return response}
+async function measurePing(signal){
+  const samples=[];
+  for(let i=0;i<4;i++){
+    const start=performance.now();
+    const response=await speedFetch(speedDownUrl+'?bytes=0&ts='+Date.now()+'-'+i,{method:'GET'},signal);
+    await response.arrayBuffer();
+    samples.push(performance.now()-start);
+    showSpeed('pingResult',Math.round(samples.reduce((a,b)=>a+b,0)/samples.length));
+    $('speedStatus').textContent='Measuring latency…';
+  }
+  return Math.round(samples.reduce((a,b)=>a+b,0)/samples.length);
+}
+async function measureDownload(bytes,signal){
+  const start=performance.now();
+  const response=await speedFetch(speedDownUrl+'?bytes='+bytes+'&ts='+Date.now(),{method:'GET'},signal);
+  const data=await response.arrayBuffer();
+  const elapsed=performance.now()-start;
+  if(!data.byteLength)throw new Error('Download test returned no data.');
+  return Number(formatSpeed(data.byteLength,elapsed));
+}
+async function measureUpload(bytes,signal){
+  const payload=new Uint8Array(bytes);
+  const start=performance.now();
+  const response=await speedFetch(speedUpUrl+'?ts='+Date.now(),{method:'POST',headers:{'Content-Type':'application/octet-stream'},body:payload},signal);
+  await response.arrayBuffer();
+  const elapsed=performance.now()-start;
+  return Number(formatSpeed(bytes,elapsed));
+}
+function stopSpeedTest(message='Speed test stopped.'){
+  if(speedController)speedController.abort();
+  speedController=null;
+  speedRunning=false;
+  $('speedStart').disabled=false;
+  $('speedStop').disabled=true;
+  $('speedStatus').textContent=message;
+}
+$('speedStart').onclick=async()=>{
+  if(speedRunning)return;
+  speedRunning=true;
+  speedController=new AbortController();
+  const signal=speedController.signal;
+  ['pingResult','downloadResult','uploadResult'].forEach(id=>showSpeed(id,'—'));
+  $('speedStart').disabled=true;
+  $('speedStop').disabled=false;
+  $('speedStatus').textContent='Checking connection…';
+  try{
+    const ping=await measurePing(signal);
+    if(signal.aborted)return;
+    showSpeed('pingResult',ping);
+    $('speedStatus').textContent='Testing download speed…';
+    const download=await measureDownload(5*1024*1024,signal);
+    if(signal.aborted)return;
+    showSpeed('downloadResult',download.toFixed(1));
+    $('speedStatus').textContent='Testing upload speed…';
+    const upload=await measureUpload(2*1024*1024,signal);
+    if(signal.aborted)return;
+    showSpeed('uploadResult',upload.toFixed(1));
+    stopSpeedTest('Speed test complete.');
+  }catch(error){
+    if(error.name==='AbortError')return;
+    stopSpeedTest('Speed test failed: '+error.message+' Check your connection and try again.');
+  }
+};
+$('speedStop').onclick=()=>stopSpeedTest();
+window.addEventListener('pagehide',()=>{if(speedController)speedController.abort()});
 window.addEventListener('pagehide',()=>{stopCamera();stopMicTracks();if(micPlaybackUrl)URL.revokeObjectURL(micPlaybackUrl);stopSpeaker(false)});
 })();
